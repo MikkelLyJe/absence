@@ -1,0 +1,56 @@
+@{title('Supervisor')}
+<h1>@{title}</h1>
+<div data-jc="datagrid__office" onclick="myClicky()">
+	<script type="text/plain">
+		[
+			{ name: 'name', text: 'Name', width: 200 },
+			{ name: 'price', text: 'Worker ID', align: 'center', alignfilter: 'center' },
+			{ name: 'description', text: 'Description', filter: 'Search in description' },
+            { name: 'sick', text: 'Sick'},
+            { name: 'absent', text: 'Absent'}
+		]
+	</script>
+</div>
+<p>
+		<input type="button" onclick='printChecked()' value="Print Selected Items"/>
+	</p>
+<script>
+	var office = [];
+	for (var i = 1; i < 29; i++)
+		office.push({ name: '{0} Office'.format(i), description: 'Office workers', price: i, sick: localStorage.getItem('on_load_counter' + i), absent: localStorage.getItem('on_load_countern')});
+</script>
+  
+   <script>
+       var storage = [];
+    for (var i = 1; i < 29; i++)
+		office.push({ name: '{0} Storage'.format(i), description: 'Storage workers', price: i, sick: localStorage.getItem('on_load_counters' + i), absent: i});
+</script>
+  
+   <script>
+       var floor = [];
+    for (var i = 1; i < 29; i++)
+		office.push({ name: '{0} Floor'.format(i), description: 'Floor workers', price: i, sick: localStorage.getItem('on_load_counterF' + i), absent: i  });
+       document.getItem('on_load_counter').innerHTML = n;
+</script>
+<script>
+    
+ function myClicky(office) {
+var n = localStorage.getItem('on_load_countern');
+if (n === null) {
+    n = 0;
+}
+n++;
+localStorage.setItem("on_load_countern", n);
+    }
+</script>
+<script>
+	function printChecked(){
+		var items=document.getElementsByName('office');
+		var selectedItems="";
+		for(var i=0; i<items.length; i++){
+			if(items[i].type=='checkbox' && items[i].checked==true)
+				selectedItems+=items[i].value+"\n";
+		}
+        print(selectedItems);
+	}			
+</script>
